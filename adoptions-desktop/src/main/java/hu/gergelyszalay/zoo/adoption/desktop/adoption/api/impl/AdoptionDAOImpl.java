@@ -2,6 +2,7 @@ package hu.gergelyszalay.zoo.adoption.desktop.adoption.api.impl;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.api.AdoptionDAO;
+import hu.gergelyszalay.zoo.adoption.desktop.config.ZooAdoptionsConfiguration;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -11,12 +12,12 @@ import java.util.List;
 public class AdoptionDAOImpl implements AdoptionDAO {
 
     // SQL Statements
-    private static final String SELECT_ALL_ADOPTATIONS = "SELECT * FROM ADOPTATIONS";
-    private static final String INSERT_ADOPTATION = "INSERT INTO ADOPTATIONS " +
+    private static final String SELECT_ALL_ADOPTATIONS = "SELECT * FROM ADOPTIONS";
+    private static final String INSERT_ADOPTATION = "INSERT INTO ADOPTIONS " +
             "(id, animalId, adopterId, adoptionDate, supportType, supportAmount) VALUES (?,?,?,?,?,?)";
-    private static final String UPDATE_ADOPTATION = "UPDATE ADOPTATIONS " +
+    private static final String UPDATE_ADOPTATION = "UPDATE ADOPTIONS " +
             "SET animalId=?, adopterId = ?, adoptionDate = ?, supportType=?, supportAmount=? WHERE id=?";
-    private static final String DELETE_ADOPTATION = "DELETE FROM ADOPTATIONS WHERE id = ?";
+    private static final String DELETE_ADOPTATION = "DELETE FROM ADOPTIONS WHERE id = ?";
     private final String connectionURL;
 
     public AdoptionDAOImpl() {
@@ -106,5 +107,7 @@ public class AdoptionDAOImpl implements AdoptionDAO {
         }
 
     }
+
+
 
 }

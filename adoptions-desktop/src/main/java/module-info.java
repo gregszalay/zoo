@@ -3,8 +3,8 @@ module hu.gergelyszalay {
     requires javafx.fxml;
     requires java.sql;
 
-    opens hu.gergelyszalay to javafx.fxml;
-    opens hu.gergelyszalay.zoo.adoption.desktop to javafx.fxml;
+//    opens hu.gergelyszalay to javafx.fxml;
+//    opens hu.gergelyszalay.zoo.adoption.desktop to javafx.fxml;
     exports hu.gergelyszalay.zoo.adoption.desktop.adopter;
     opens hu.gergelyszalay.zoo.adoption.desktop.adopter to javafx.fxml;
     exports hu.gergelyszalay.zoo.adoption.desktop.adoption;

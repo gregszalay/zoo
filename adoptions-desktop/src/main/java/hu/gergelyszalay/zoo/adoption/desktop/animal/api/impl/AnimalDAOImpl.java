@@ -2,6 +2,7 @@ package hu.gergelyszalay.zoo.adoption.desktop.animal.api.impl;
 
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.api.AnimalDAO;
+import hu.gergelyszalay.zoo.adoption.desktop.config.ZooAdoptionsConfiguration;
 
 import java.sql.*;
 import java.util.ArrayList;
