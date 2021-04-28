@@ -9,7 +9,7 @@ public class ZooAdoptionsConfiguration {
 
         static{
             try {
-                props.load(ZooAdoptionsConfiguration.class.getResourceAsStream("application.properties"));
+                props.load(ZooAdoptionsConfiguration.class.getResourceAsStream("/application.properties"));
             } catch (IOException e) {
                 // TODO: logging
                 e.printStackTrace();

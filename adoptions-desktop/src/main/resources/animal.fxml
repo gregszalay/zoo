@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalController">-->
+<!--<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalsHomeController">-->
 <!--    <children>-->
 <!--        <Label text="Secondary View" />-->
 <!--        <Button fx:id="secondaryButton" text="Switch to Primary View" onAction="#switchToPrimary" />-->
@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="464.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalController">
+<GridPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="464.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalsHomeController">
     <rowConstraints>
         <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
         <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />

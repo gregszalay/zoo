@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalController">-->
+<!--<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalsHomeController">-->
 <!--    <children>-->
 <!--        <Label text="Secondary View" />-->
 <!--        <Button fx:id="secondaryButton" text="Switch to Primary View" onAction="#switchToPrimary" />-->
@@ -15,7 +15,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="464.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalController">
+<GridPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="429.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="hu.gergelyszalay.zoo.adoption.desktop.adoption.mvccontroller.AdoptionItemsController">
     <rowConstraints>
         <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
         <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
@@ -26,28 +27,30 @@
         <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
     </rowConstraints>
     <columnConstraints>
-      <ColumnConstraints minWidth="10.0" percentWidth="11.0" prefWidth="100.0" />
+        <ColumnConstraints minWidth="10.0" percentWidth="11.0" prefWidth="100.0" />
         <ColumnConstraints minWidth="10.0" percentWidth="47.0" prefWidth="100.0" />
         <ColumnConstraints minWidth="10.0" percentWidth="119.0" prefWidth="100.0" />
-      <ColumnConstraints minWidth="10.0" percentWidth="23.0" prefWidth="100.0" />
+        <ColumnConstraints minWidth="10.0" percentWidth="23.0" prefWidth="100.0" />
     </columnConstraints>
     <children>
         <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
-         <children>
-                <Label prefHeight="25.0" prefWidth="308.0" text="Állat hozzáadása/módosítása">
+            <children>
+                <Label prefHeight="25.0" prefWidth="434.0" text="Örökbefogadás hozzáadása/módosítása">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Label>
-         </children>
+            </children>
         </StackPane>
-        <Label text="id" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Label text="name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Label text="species" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-        <Label text="introduction" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-        <Label text="birthYear" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
-        <HBox alignment="CENTER" prefHeight="92.0" prefWidth="433.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+        <Label text="id" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="animalId" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="adopterId" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="adoptionDate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Label text="supportType" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Label text="supportAmount" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+
+        <HBox alignment="CENTER" prefHeight="92.0" prefWidth="433.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
             <children>
                 <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onSave" text="Save" />
                 <Button mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
@@ -58,9 +61,12 @@
         </HBox>
 
         <TextField fx:id="id" disable="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <TextField fx:id="name" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <TextField GridPane.columnIndex="2" GridPane.rowIndex="3" />
-      <TextArea prefHeight="89.0" prefWidth="311.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-        <TextField fx:id="birthYear" prefHeight="25.0" prefWidth="421.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+        <TextField fx:id="animalId" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <TextField fx:id="adopterId" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <DatePicker fx:id="adoptionDate" prefHeight="25.0" prefWidth="421.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <TextField fx:id="supportType" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+        <TextField fx:id="supportAmount" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+
+
     </children>
 </GridPane>

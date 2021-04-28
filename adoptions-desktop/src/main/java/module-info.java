@@ -19,6 +19,6 @@ module hu.gergelyszalay {
     opens hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller to javafx.fxml;
     exports hu.gergelyszalay.zoo.adoption.desktop.desktopui;
     opens hu.gergelyszalay.zoo.adoption.desktop.desktopui to javafx.fxml;
-    opens hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller to javafx.fxml;
-    exports hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller;
+   // opens hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller to javafx.fxml;
+   // exports hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller;
 }

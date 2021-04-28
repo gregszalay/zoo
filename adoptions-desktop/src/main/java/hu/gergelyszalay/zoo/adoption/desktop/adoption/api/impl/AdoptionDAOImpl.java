@@ -14,9 +14,9 @@ public class AdoptionDAOImpl implements AdoptionDAO {
     // SQL Statements
     private static final String SELECT_ALL_ADOPTATIONS = "SELECT * FROM ADOPTIONS";
     private static final String INSERT_ADOPTATION = "INSERT INTO ADOPTIONS " +
-            "(id, animalId, adopterId, adoptionDate, supportType, supportAmount) VALUES (?,?,?,?,?,?)";
+            "(id, animal_Id, adopter_Id, date, support_type, support_amount) VALUES (?,?,?,?,?,?)";
     private static final String UPDATE_ADOPTATION = "UPDATE ADOPTIONS " +
-            "SET animalId=?, adopterId = ?, adoptionDate = ?, supportType=?, supportAmount=? WHERE id=?";
+            "SET animal_Id=?, adopter_Id = ?, date = ?, support_type=?, support_amount=? WHERE id=?";
     private static final String DELETE_ADOPTATION = "DELETE FROM ADOPTIONS WHERE id = ?";
     private final String connectionURL;
 

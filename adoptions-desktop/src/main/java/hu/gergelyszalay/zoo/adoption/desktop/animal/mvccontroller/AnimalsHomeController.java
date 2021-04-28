@@ -12,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class AnimalController {
+public class AnimalsHomeController {
 
 
 
@@ -36,15 +36,15 @@ public class AnimalController {
     @FXML
     private Button saveBtn;
 
-    private Animal animal;
-    private AnimalDAO animalDAO = new AnimalDAOImpl();
-    private AdoptionDAO adoptionDAO = new AdoptionDAOImpl();
-
+//    private Animal animal;
+//    private AnimalDAO animalDAO = new AnimalDAOImpl();
+//    private AdoptionDAO adoptionDAO = new AdoptionDAOImpl();
+//
 
 
     @FXML
     public void onSave(){
-        animal = animalDAO.save(animal);
+        //animal = animalDAO.save(animal);
         try {
             App.loadFXML("/home.fxml");
         } catch (IOException e) {
@@ -68,7 +68,7 @@ public class AnimalController {
     }
 
     public void setAnimal(Animal animal) {
-        this.animal = animal;
+        //this.animal = animal;
     }
 
 
