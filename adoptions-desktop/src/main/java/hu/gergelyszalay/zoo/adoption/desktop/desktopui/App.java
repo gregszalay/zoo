@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 /**
  * JavaFX App
@@ -32,6 +33,9 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
+        //System.out.printf(LocalDate.now().toString());
+        //
+        //
         launch();
     }
 

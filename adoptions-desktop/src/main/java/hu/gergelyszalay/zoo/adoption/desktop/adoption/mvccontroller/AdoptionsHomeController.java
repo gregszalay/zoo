@@ -2,7 +2,9 @@ package hu.gergelyszalay.zoo.adoption.desktop.adoption.mvccontroller;
 
 import hu.gergelyszalay.zoo.adoption.desktop.CustomWindow;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
+import hu.gergelyszalay.zoo.adoption.desktop.adoption.api.impl.AdoptionDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
+import hu.gergelyszalay.zoo.adoption.desktop.animal.api.impl.AnimalDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalsHomeController;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.App;
 import javafx.application.Platform;
@@ -20,7 +22,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class AdoptionsHomeController implements Initializable {
@@ -52,18 +53,19 @@ public class AdoptionsHomeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        this.adoptersTotal.setText(new AdoptionDAOImpl().countAdopters().toString());
+        this.adoptedAnimalsOverTotalAnimals.setText(
+                new AdoptionDAOImpl().countAdopters().toString() + "/"
+                + new AnimalDAOImpl().countAnimals().toString()        );
+
         column1.setCellValueFactory(new PropertyValueFactory<>("animalId"));
         column2.setCellValueFactory(new PropertyValueFactory<>("adopterId"));
         column3.setCellValueFactory(new PropertyValueFactory<>("adoptionDate"));
         column4.setCellValueFactory(new PropertyValueFactory<>("supportType"));
         column5.setCellValueFactory(new PropertyValueFactory<>("supportAmount"));
 
-        Adoption adoption1 = new Adoption();
-        adoption1.setAdopterId(2645363);
-        adoption1.setId(23542354);
-        adoption1.setAnimalId(23542354);
-        adoption1.setAdoptionDate(LocalDate.now());
-        adoptionList.add(adoption1);
+
+        adoptionList.addAll(new AdoptionDAOImpl().findAll());
 
         myTableView.getItems().addAll(adoptionList);
 

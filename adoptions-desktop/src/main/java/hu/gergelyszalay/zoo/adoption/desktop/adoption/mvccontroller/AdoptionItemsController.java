@@ -1,13 +1,14 @@
 package hu.gergelyszalay.zoo.adoption.desktop.adoption.mvccontroller;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
-import hu.gergelyszalay.zoo.adoption.desktop.adoption.api.AdoptionDAO;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.api.impl.AdoptionDAOImpl;
-import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.App;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
 
 import java.io.IOException;
@@ -32,31 +33,32 @@ public class AdoptionItemsController implements Initializable {
     @FXML
     private Button saveBtn;
 
-   private Adoption adoption;
+    private Adoption adoption;
 
     @FXML
-    public void onSave(){
+    public void onSave() {
         adoption = new AdoptionDAOImpl().save(adoption);
         try {
             App.loadFXML("/home");
         } catch (IOException e) {
             e.printStackTrace();
         }
+        closeWindow();
+    }
+
+    private void closeWindow() {
+        ((Stage) this.saveBtn.getScene().getWindow()).close();
     }
 
 
     @FXML
-    public void onCancel(){
+    public void onCancel() {
         try {
             App.loadFXML("/home");
         } catch (IOException e) {
             e.printStackTrace();
-        }    }
-
-
-    @FXML
-    private void switchToPrimary() throws IOException {
-        App.setRoot("primary");
+        }
+        closeWindow();
     }
 
     public void setAdoption(Adoption adoption) {

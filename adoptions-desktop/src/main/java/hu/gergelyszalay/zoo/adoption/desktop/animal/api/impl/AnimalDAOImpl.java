@@ -17,6 +17,8 @@ public class AnimalDAOImpl implements AnimalDAO {
     private static final String UPDATE_ANIMAL = "UPDATE ANIMALS " +
             "SET name=?, species = ?, introduction = ?, birth_year=? WHERE id=?";
     private static final String DELETE_ANIMAL = "DELETE FROM ANIMALS WHERE id = ?";
+    private static final String COUNT_TOTAL_ANIMALS = "SELECT COUNT(*) as animals FROM animals";
+
     private final String connectionURL;
 
     public AnimalDAOImpl() {
@@ -101,6 +103,28 @@ public class AnimalDAOImpl implements AnimalDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
+    }
+
+    public Integer countAnimals() {
+
+        Integer totalAnimals = -1;
+
+        try (Connection c = DriverManager.getConnection(connectionURL);
+             Statement stmt = c.createStatement();
+             ResultSet rs = stmt.executeQuery(COUNT_TOTAL_ANIMALS)
+        ) {
+
+            while (rs.next()) {
+                totalAnimals = rs.getInt("animals");
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return totalAnimals;
 
     }
 
