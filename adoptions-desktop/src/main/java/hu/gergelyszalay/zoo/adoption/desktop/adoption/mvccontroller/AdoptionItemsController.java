@@ -3,13 +3,17 @@ package hu.gergelyszalay.zoo.adoption.desktop.adoption.mvccontroller;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.api.impl.AdoptionDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.App;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.converter.DateStringConverter;
 import javafx.util.converter.NumberStringConverter;
+import org.w3c.dom.events.Event;
+import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,15 +39,23 @@ public class AdoptionItemsController implements Initializable {
 
     private Adoption adoption;
 
+    public Button getSaveBtn() {
+        return saveBtn;
+    }
+
+
+
     @FXML
     public void onSave() {
         adoption = new AdoptionDAOImpl().save(adoption);
         try {
             App.loadFXML("/home");
+            System.out.println("loading");
         } catch (IOException e) {
             e.printStackTrace();
         }
         closeWindow();
+
     }
 
     private void closeWindow() {
@@ -63,20 +75,27 @@ public class AdoptionItemsController implements Initializable {
 
     public void setAdoption(Adoption adoption) {
         this.adoption = adoption;
+        //createBinds();
     }
 
 
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+//        setAdoption(new Adoption());
         setAdoption(AdoptionsHomeController.currentlyViewedAdoption);
+        createBinds();
+//        this.saveBtn.setOnAction(event -> {
+//            adoption = new AdoptionDAOImpl().save(adoption);
+//        });
+    }
 
-        id.textProperty().bindBidirectional(adoption.idProperty(), new NumberStringConverter());
-        animalId.textProperty().bindBidirectional(adoption.animalIdProperty(), new NumberStringConverter());
-        adopterId.textProperty().bindBidirectional(adoption.adopterIdProperty(), new NumberStringConverter());
-        adoptionDate.valueProperty().bindBidirectional(adoption.adoptionDateProperty());
-        supportType.textProperty().bindBidirectional(adoption.supportTypeProperty());
-        supportAmount.textProperty().bindBidirectional(adoption.supportAmountProperty(), new NumberStringConverter());
-
+    private void createBinds(){
+        this.id.textProperty().bindBidirectional(this.adoption.idProperty(), new NumberStringConverter());
+        this.animalId.textProperty().bindBidirectional(this.adoption.animalIdProperty(), new NumberStringConverter());
+        this.adopterId.textProperty().bindBidirectional(this.adoption.adopterIdProperty(), new NumberStringConverter());
+        this.adoptionDate.valueProperty().bindBidirectional(this.adoption.adoptionDateProperty());
+        this.supportType.textProperty().bindBidirectional(this.adoption.supportTypeProperty());
+        this.supportAmount.textProperty().bindBidirectional(this.adoption.supportAmountProperty(), new NumberStringConverter());
     }
 }

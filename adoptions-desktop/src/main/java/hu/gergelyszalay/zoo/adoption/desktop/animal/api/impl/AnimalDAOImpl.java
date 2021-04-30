@@ -13,7 +13,7 @@ public class AnimalDAOImpl implements AnimalDAO {
     // SQL Statements
     private static final String SELECT_ALL_ANIMALS = "SELECT * FROM ANIMALS";
     private static final String INSERT_ANIMAL = "INSERT INTO ANIMALS " +
-            "(id, name, species, introduction, birth_year) VALUES (?,?,?,?,?,?)";
+            "(id, name, species, introduction, birth_year) VALUES (?,?,?,?,?)";
     private static final String UPDATE_ANIMAL = "UPDATE ANIMALS " +
             "SET name=?, species = ?, introduction = ?, birth_year=? WHERE id=?";
     private static final String DELETE_ANIMAL = "DELETE FROM ANIMALS WHERE id = ?";
@@ -41,7 +41,7 @@ public class AnimalDAOImpl implements AnimalDAO {
                 animal.setName(rs.getString("name"));
                 animal.setSpecies(rs.getString("species"));
                 animal.setIntroduction(rs.getString("introduction"));
-                animal.setBirthYear(rs.getInt("birthYear"));
+                animal.setBirthYear(rs.getInt("birth_year"));
 
                 result.add(animal);
             }

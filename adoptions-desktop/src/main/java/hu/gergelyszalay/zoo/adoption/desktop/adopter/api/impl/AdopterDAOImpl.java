@@ -14,9 +14,9 @@ public class AdopterDAOImpl implements AdopterDAO {
     // SQL Statements
     private static final String SELECT_ALL_ADOPTERS = "SELECT * FROM ADOPTERS";
     private static final String INSERT_ADOPTER = "INSERT INTO ADOPTERS " +
-            "(id, lastName, firstName, email) VALUES (?,?,?,?,?,?)";
+            "(id, last_name, first_name, email) VALUES (?,?,?,?)";
     private static final String UPDATE_ADOPTER = "UPDATE ADOPTERS " +
-            "SET lastName=?, firstName = ?, email = ? WHERE id=?";
+            "SET last_name=?, first_name = ?, email = ? WHERE id=?";
     private static final String DELETE_ADOPTER = "DELETE FROM ADOPTERS WHERE id = ?";
     private final String connectionURL;
 
@@ -37,8 +37,8 @@ public class AdopterDAOImpl implements AdopterDAO {
             while (rs.next()) {
                 Adopter adopter = new Adopter();
                 adopter.setId(rs.getInt("id"));
-                adopter.setLastName(rs.getString("lastName"));
-                adopter.setFirstName(rs.getString("firstName"));
+                adopter.setLastName(rs.getString("last_name"));
+                adopter.setFirstName(rs.getString("first_name"));
                 adopter.setEmail(rs.getString("email"));
 
                 result.add(adopter);

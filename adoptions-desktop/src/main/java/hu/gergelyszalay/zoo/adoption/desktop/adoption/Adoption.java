@@ -15,78 +15,84 @@ public class Adoption implements Serializable {
     private final IntegerProperty supportAmount = new SimpleIntegerProperty(this, "supportAmount");
 
     public Adoption() {
+        id.set(-1);
+        animalId.set(-1);
+        adopterId.set(-1);
+        adoptionDate.set(LocalDate.now());
+        supportType.set("Nincs");
+        supportAmount.set(0);
     }
 
     public int getId() {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public int getAnimalId() {
         return animalId.get();
     }
 
-    public IntegerProperty animalIdProperty() {
-        return animalId;
-    }
-
     public void setAnimalId(int animalId) {
         this.animalId.set(animalId);
+    }
+
+    public IntegerProperty animalIdProperty() {
+        return animalId;
     }
 
     public int getAdopterId() {
         return adopterId.get();
     }
 
-    public IntegerProperty adopterIdProperty() {
-        return adopterId;
-    }
-
     public void setAdopterId(int adopterId) {
         this.adopterId.set(adopterId);
+    }
+
+    public IntegerProperty adopterIdProperty() {
+        return adopterId;
     }
 
     public LocalDate getAdoptionDate() {
         return adoptionDate.get();
     }
 
-    public ObjectProperty<LocalDate> adoptionDateProperty() {
-        return adoptionDate;
-    }
-
     public void setAdoptionDate(LocalDate adoptionDate) {
         this.adoptionDate.set(adoptionDate);
+    }
+
+    public ObjectProperty<LocalDate> adoptionDateProperty() {
+        return adoptionDate;
     }
 
     public String getSupportType() {
         return supportType.get();
     }
 
-    public StringProperty supportTypeProperty() {
-        return supportType;
-    }
-
     public void setSupportType(String supportType) {
         this.supportType.set(supportType);
+    }
+
+    public StringProperty supportTypeProperty() {
+        return supportType;
     }
 
     public int getSupportAmount() {
         return supportAmount.get();
     }
 
-    public IntegerProperty supportAmountProperty() {
-        return supportAmount;
-    }
-
     public void setSupportAmount(int supportAmount) {
         this.supportAmount.set(supportAmount);
+    }
+
+    public IntegerProperty supportAmountProperty() {
+        return supportAmount;
     }
 
 }

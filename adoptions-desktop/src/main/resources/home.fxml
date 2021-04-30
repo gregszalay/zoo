@@ -6,7 +6,10 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="808.0" prefWidth="1206.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.adoption.mvccontroller.AdoptionsHomeController">
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="808.0" prefWidth="1206.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.adoption.mvccontroller.AdoptionsHomeController">
     <children>
 
 
@@ -22,12 +25,9 @@
                         <Insets bottom="10.0" top="50.0" />
                     </VBox.margin>
                 </ImageView>
-                <Label text="Jimmy Fallon" textFill="#e7e5e5">
-                    <VBox.margin>
-                        <Insets bottom="20.0" />
-                    </VBox.margin>
-                </Label>
-                <Button fx:id="btnOverview" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Örökbefogadások" textFill="#e7e5e5">
+                <Button fx:id="adoptionsButton" alignment="BASELINE_LEFT" graphicTextGap="22.0"
+                        mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0"
+                        stylesheets="@style.css" text="Örökbefogadások" textFill="#a88989">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -45,7 +45,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Állatok">
+                <Button fx:id="animalsButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Állatok">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -57,7 +57,7 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Örökbefogadók">
+                <Button fx:id="adoptersButton" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Örökbefogadók">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -77,10 +77,31 @@
 
         <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
             <children>
-                <Pane fx:id="pnlCustomer" prefHeight="200.0" prefWidth="200.0" />
-                <Pane fx:id="pnlOrders" prefHeight="200.0" prefWidth="200.0" />
-                <Pane fx:id="pnlMenus" prefHeight="200.0" prefWidth="200.0" />
-                <Pane fx:id="pnlOverview" prefHeight="576.0" prefWidth="852.0">
+                <Pane fx:id="adopters" prefHeight="200.0" prefWidth="200.0" >
+                    <children>
+
+                    </children>
+                    <TableView fx:id="adoptersTable" layoutX="25.0" layoutY="143.0" prefHeight="632.0" prefWidth="896.0">
+                        <columns>
+                            <TableColumn fx:id="adoptersColumn1" prefWidth="133.0" text="lastName" />
+                            <TableColumn fx:id="adoptersColumn2" prefWidth="176.0" text="firstName" />
+                            <TableColumn fx:id="adoptersColumn3" prefWidth="143.0" text="email" />
+                        </columns>
+                    </TableView>
+                </Pane>
+                <Pane fx:id="animals" prefHeight="200.0" prefWidth="200.0">
+                    <TableView fx:id="animalsTable" layoutX="25.0" layoutY="143.0" prefHeight="632.0" prefWidth="896.0">
+                        <columns>
+                            <TableColumn fx:id="animalsColumn1" prefWidth="133.0" text="name" />
+                            <TableColumn fx:id="animalsColumn2" prefWidth="176.0" text="species" />
+                            <TableColumn fx:id="animalsColumn3" prefWidth="143.0" text="introduction" />
+                            <TableColumn fx:id="animalsColumn4" prefWidth="238.0" text="birthYear" />
+
+
+                        </columns>
+                    </TableView>
+                </Pane>
+                <Pane fx:id="adoptions" prefHeight="576.0" prefWidth="852.0">
                     <children>
                         <Label layoutX="57.0" layoutY="25.0" text="Állatkerti örökbefogadások" textFill="#e7e5e5">
                             <font>
@@ -135,16 +156,16 @@
 <!--                            </image>-->
 <!--                        </ImageView>-->
                     </children>
-                    <TableView fx:id="myTableView" layoutX="25.0" layoutY="143.0" prefHeight="632.0" prefWidth="896.0">
+                    <TableView fx:id="adoptionsTable" layoutX="25.0" layoutY="143.0" prefHeight="632.0" prefWidth="896.0">
                         <columns>
-                            <TableColumn fx:id="column1" prefWidth="133.0" text="Állat" />
-                            <TableColumn fx:id="column2" prefWidth="176.0" text="Örökbefogadó" />
-                            <TableColumn fx:id="column3" prefWidth="143.0" text="Dátum" />
-                            <TableColumn fx:id="column4" prefWidth="238.0" text="Támogatás Jellege" />
-                            <TableColumn fx:id="column5" prefWidth="204.0" text="Támogatás menniysége" />
+                            <TableColumn fx:id="adoptionsColumn1" prefWidth="133.0" text="Állat" />
+                            <TableColumn fx:id="adoptionsColumn2" prefWidth="176.0" text="Örökbefogadó" />
+                            <TableColumn fx:id="adoptionsColumn3" prefWidth="143.0" text="Dátum" />
+                            <TableColumn fx:id="adoptionsColumn4" prefWidth="238.0" text="Támogatás Jellege" />
+                            <TableColumn fx:id="adoptionsColumn5" prefWidth="204.0" text="Támogatás menniysége" />
                         </columns>
                     </TableView>
-               <Button fx:id="newAdoptionButton" onAction="openNewAdoption" layoutX="710.0" layoutY="57.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="202.0" text="Új örökbefogadás rögzítése" />
+               <Button fx:id="newAdoptionButton" layoutX="710.0" layoutY="57.0" mnemonicParsing="false" onAction="#openNewAdoption" prefHeight="57.0" prefWidth="202.0" text="Új örökbefogadás rögzítése" />
                 </Pane>
             </children>
         </StackPane>
