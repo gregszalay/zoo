@@ -2,7 +2,7 @@ package hu.gergelyszalay.zoo.adoption.desktop.adopter.api.impl;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.api.AdopterDAO;
-import hu.gergelyszalay.zoo.adoption.desktop.config.ZooAdoptionsConfiguration;
+import hu.gergelyszalay.zoo.adoption.desktop.desktopui.config.ZooAdoptionsConfiguration;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public class AdopterDAOImpl implements AdopterDAO {
     // SQL Statements
     private static final String SELECT_ALL_ADOPTERS = "SELECT * FROM ADOPTERS";
     private static final String INSERT_ADOPTER = "INSERT INTO ADOPTERS " +
-            "(id, last_name, first_name, email) VALUES (?,?,?,?)";
+            "(last_name, first_name, email) VALUES (?,?,?)";
     private static final String UPDATE_ADOPTER = "UPDATE ADOPTERS " +
             "SET last_name=?, first_name = ?, email = ? WHERE id=?";
     private static final String DELETE_ADOPTER = "DELETE FROM ADOPTERS WHERE id = ?";
@@ -61,7 +61,7 @@ public class AdopterDAOImpl implements AdopterDAO {
                      c.prepareStatement(UPDATE_ADOPTER)
         ) {
             if (adopter.getId() > 0) { // UPDATE
-                stmt.setInt(5, adopter.getId());
+                stmt.setInt(4, adopter.getId());
             }
 
             stmt.setString(1, String.valueOf(adopter.getLastName()));

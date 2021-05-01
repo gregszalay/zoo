@@ -2,7 +2,7 @@ package hu.gergelyszalay.zoo.adoption.desktop.adoption.api.impl;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.api.AdoptionDAO;
-import hu.gergelyszalay.zoo.adoption.desktop.config.ZooAdoptionsConfiguration;
+import hu.gergelyszalay.zoo.adoption.desktop.desktopui.config.ZooAdoptionsConfiguration;
 
 import java.sql.*;
 import java.time.LocalDate;

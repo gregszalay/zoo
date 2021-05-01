@@ -1,28 +1,24 @@
-package hu.gergelyszalay.zoo.adoption.desktop.adoption.mvccontroller;
+package hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller;
 
-import hu.gergelyszalay.zoo.adoption.desktop.CustomWindow;
+import hu.gergelyszalay.zoo.adoption.desktop.desktopui.CustomWindow;
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.api.impl.AdopterDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.api.impl.AdoptionDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.api.impl.AnimalDAOImpl;
-import hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalsHomeController;
-import hu.gergelyszalay.zoo.adoption.desktop.desktopui.App;
 import javafx.application.Platform;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdoptionsHomeController implements Initializable {
@@ -52,7 +48,7 @@ public class AdoptionsHomeController implements Initializable {
     Pane animals;
 
     @FXML
-    private TableView<Adoption> adoptionsTable;
+    TableView<Adoption> adoptionsTable;
     @FXML
     TableColumn<Adoption, String> adoptionsColumn1;
     @FXML
@@ -65,7 +61,7 @@ public class AdoptionsHomeController implements Initializable {
     TableColumn<Adoption, String> adoptionsColumn5;
 
     @FXML
-    private TableView<Adopter> adoptersTable;
+    TableView<Adopter> adoptersTable;
     @FXML
     TableColumn<Adopter, String> adoptersColumn1;
     @FXML
@@ -74,7 +70,7 @@ public class AdoptionsHomeController implements Initializable {
     TableColumn<Adopter, String> adoptersColumn3;
 
     @FXML
-    private TableView<Animal> animalsTable;
+    TableView<Animal> animalsTable;
     @FXML
     TableColumn<Animal, String> animalsColumn1;
     @FXML
@@ -88,25 +84,30 @@ public class AdoptionsHomeController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        initializeAdoptionsTable();
+        initializeAdoptersTable();
+        initializeAnimalsTable();
+
         initializeTotalLabels();
 
         refreshAdoptionsTable();
         refreshAdoptersTable();
         refreshAnimalsTable();
 
-        initializeAdoptionsTable();
-        initializeAdoptersTable();
-        initializeAnimalsTable();
+
+
+        System.out.println("initialize");
 
     }
 
     private void initializeTotalLabels(){
 
         Integer totalAdopters = new AdoptionDAOImpl().countAdopters();
-        Integer totalAnimals = new AnimalDAOImpl().countAnimals();
+        Integer totalAdoptedAnimals= new AdoptionDAOImpl().countAdoptedAnimals();
+                Integer totalAnimals = new AnimalDAOImpl().countAnimals();
 
-        this.adoptersTotal.setText(new AdoptionDAOImpl().countAdopters().toString());
-        this.adoptedAnimalsOverTotalAnimals.setText(totalAdopters.toString() + "/" + totalAnimals.toString());
+        this.adoptersTotal.setText(totalAdopters.toString());
+        this.adoptedAnimalsOverTotalAnimals.setText(totalAdoptedAnimals.toString() + "/" + totalAnimals.toString());
 
     }
 
@@ -121,7 +122,7 @@ public class AdoptionsHomeController implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     currentlyViewedAdoption = row.getItem();
-                    this.addOrEditWindow = new CustomWindow("/adoption.fxml", null,
+                    this.addOrEditWindow = new CustomWindow("/fxml/adoption.fxml", null,
                             "Örökbefogadás", 800, 500, true);
                 }
             });
@@ -138,7 +139,7 @@ public class AdoptionsHomeController implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     currentlyViewedAdopter = row.getItem();
-                    this.addOrEditWindow = new CustomWindow("/adopter.fxml", null,
+                    this.addOrEditWindow = new CustomWindow("/fxml/adopter.fxml", null,
                             "Örökbefogadó", 800, 500, true);
                 }
             });
@@ -156,7 +157,7 @@ public class AdoptionsHomeController implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     currentlyViewedAnimal = row.getItem();
-                    this.addOrEditWindow = new CustomWindow("/animal.fxml", null,
+                    this.addOrEditWindow = new CustomWindow("/fxml/animal.fxml", null,
                             "Állat", 800, 500, true);
                 }
             });
@@ -164,55 +165,74 @@ public class AdoptionsHomeController implements Initializable {
         });
     }
 
-
-    @FXML
-    public void onExit() {
-        Platform.exit();
-    }
-
-    private void editAnimal(Animal animal) {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/animal" + ".fxml"));
-        AnimalsHomeController animalsHomeController = fxmlLoader.getController();
-        animalsHomeController.setAnimal(animal);
-    }
-
-
     public void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == adoptionsButton) {
             //adopters.setStyle("-fx-background-color : #1620A1");
             adoptions.toFront();
+            refreshAdoptionsTable();
         }
         if (actionEvent.getSource() == adoptersButton) {
             //pnlMenus.setStyle("-fx-background-color : #53639F");
             adopters.toFront();
+            refreshAdoptersTable();
         }
         if (actionEvent.getSource() == animalsButton) {
            // pnlOverview.setStyle("-fx-background-color : #02030A");
             animals.toFront();
+            refreshAnimalsTable();
         }
     }
 
 
     public void refreshAdoptionsTable() {
-        adoptionsTable.getItems().setAll(new AdoptionDAOImpl().findAll());
-        adoptionsTable.refresh();
+        //adoptionsTable.getItems().clear();
+        List<Adoption> adoptionList = new AdoptionDAOImpl().findAll();
+
+        Platform.runLater(()->{
+            adoptionsTable.getItems().setAll(adoptionList);
+            adoptionsTable.refresh();
+        });
     }
 
     public void refreshAdoptersTable() {
+        adoptersTable.getItems().clear();
+
         adoptersTable.getItems().setAll(new AdopterDAOImpl().findAll());
         adoptersTable.refresh();
     }
 
     public void refreshAnimalsTable() {
-        animalsTable.getItems().setAll(new AnimalDAOImpl().findAll());
-        animalsTable.refresh();
+        animalsTable.getItems().clear();
+        List<Animal> animalList = new AnimalDAOImpl().findAll();
+        ObservableList<Animal> animalObservableList =
+        FXCollections.observableArrayList(new AnimalDAOImpl().findAll());
+
+        Platform.runLater(()->{
+            animalsTable.getItems().setAll(animalObservableList);
+            animalsTable.refresh();
+        });
     }
 
     @FXML
     public void openNewAdoption(){
         currentlyViewedAdoption = new Adoption();
-        this.addOrEditWindow = new CustomWindow("/adoption.fxml", null,
+        this.addOrEditWindow = new CustomWindow("/fxml/adoption.fxml", null,
                 "Új Örökbefogadás", 800, 500, false);
+    }
+
+    @FXML
+    public void openNewAdopter(){
+        currentlyViewedAdopter = new Adopter();
+        this.addOrEditWindow = new CustomWindow("/fxml/adopter.fxml", null,
+                "Új Örökbefogadó", 800, 500, false);
+    }
+
+    @FXML
+    public void openNewAnimal(){
+        currentlyViewedAnimal = new Animal();
+        this.addOrEditWindow = new CustomWindow("/fxml/animal.fxml", null,
+                "Új Állat", 800, 500, false);
+
     }
 
 }

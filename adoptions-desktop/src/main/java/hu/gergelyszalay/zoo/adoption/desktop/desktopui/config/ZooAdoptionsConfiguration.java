@@ -1,4 +1,4 @@
-package hu.gergelyszalay.zoo.adoption.desktop.config;
+package hu.gergelyszalay.zoo.adoption.desktop.desktopui.config;
 
 import java.io.IOException;
 import java.util.Properties;

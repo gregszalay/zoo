@@ -14,65 +14,70 @@ public class Animal {
     private final IntegerProperty birthYear = new SimpleIntegerProperty(this, "birthYear");
 
     public Animal() {
+        id.set(-1);
+        name.set("Kérjük, adja meg az állat becenevét!");
+        species.set("Kérjük, adja meg az állat fajtáját!");
+        introduction.set("Kérjük, adja meg a példány rövid ismertetését!");
+        birthYear.set(0);
     }
 
     public int getId() {
         return id.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id.set(id);
+    }
+
+    public IntegerProperty idProperty() {
+        return id;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 
     public String getSpecies() {
         return species.get();
     }
 
-    public StringProperty speciesProperty() {
-        return species;
-    }
-
     public void setSpecies(String species) {
         this.species.set(species);
+    }
+
+    public StringProperty speciesProperty() {
+        return species;
     }
 
     public String getIntroduction() {
         return introduction.get();
     }
 
-    public StringProperty introductionProperty() {
-        return introduction;
-    }
-
     public void setIntroduction(String introduction) {
         this.introduction.set(introduction);
+    }
+
+    public StringProperty introductionProperty() {
+        return introduction;
     }
 
     public int getBirthYear() {
         return birthYear.get();
     }
 
-    public IntegerProperty birthYearProperty() {
-        return birthYear;
-    }
-
     public void setBirthYear(int birthYear) {
         this.birthYear.set(birthYear);
+    }
+
+    public IntegerProperty birthYearProperty() {
+        return birthYear;
     }
 }

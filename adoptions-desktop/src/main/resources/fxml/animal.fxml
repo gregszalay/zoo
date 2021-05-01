@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="464.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/11.0.1"
+          xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller.AnimalItemController">
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
+        <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
+        <RowConstraints maxHeight="99.0" minHeight="10.0" percentHeight="8.0" prefHeight="77.0" />
+        <RowConstraints fillHeight="false" maxHeight="161.0" minHeight="10.0" percentHeight="36.0" prefHeight="127.0" vgrow="NEVER" />
+        <RowConstraints maxHeight="160.0" minHeight="0.0" percentHeight="8.0" prefHeight="63.0" />
+        <RowConstraints maxHeight="58.0" minHeight="10.0" percentHeight="8.0" prefHeight="58.0" />
+        <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
+    </rowConstraints>
+    <columnConstraints>
+        <ColumnConstraints minWidth="10.0" percentWidth="11.0" prefWidth="100.0" />
+        <ColumnConstraints minWidth="10.0" percentWidth="47.0" prefWidth="100.0" />
+        <ColumnConstraints minWidth="10.0" percentWidth="119.0" prefWidth="100.0" />
+        <ColumnConstraints minWidth="10.0" percentWidth="23.0" prefWidth="100.0" />
+    </columnConstraints>
+    <children>
+        <StackPane prefHeight="150.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
+            <children>
+                <Label prefHeight="25.0" prefWidth="308.0" text="Állat hozzáadása/módosítása">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+            </children>
+        </StackPane>
+        <Label text="id" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Label text="name" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="species" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Label text="introduction" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Label text="birthYear" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+        <HBox alignment="CENTER" prefHeight="92.0" prefWidth="433.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6">
+            <children>
+                <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onSave" text="Mentés" />
+                <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" text="Törlés" />
+                <Button mnemonicParsing="false" onAction="#onCancel" text="Cancel" />
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </HBox>
+
+        <TextField fx:id="id" disable="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <TextField fx:id="name" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <TextField fx:id="species" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <TextField fx:id="introduction" prefHeight="89.0" prefWidth="311.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <TextField fx:id="birthYear" prefHeight="25.0" prefWidth="421.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+
+    </children>
+</GridPane>

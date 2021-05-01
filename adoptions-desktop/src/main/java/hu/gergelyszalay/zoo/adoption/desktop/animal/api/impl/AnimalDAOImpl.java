@@ -2,7 +2,7 @@ package hu.gergelyszalay.zoo.adoption.desktop.animal.api.impl;
 
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.api.AnimalDAO;
-import hu.gergelyszalay.zoo.adoption.desktop.config.ZooAdoptionsConfiguration;
+import hu.gergelyszalay.zoo.adoption.desktop.desktopui.config.ZooAdoptionsConfiguration;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class AnimalDAOImpl implements AnimalDAO {
     // SQL Statements
     private static final String SELECT_ALL_ANIMALS = "SELECT * FROM ANIMALS";
     private static final String INSERT_ANIMAL = "INSERT INTO ANIMALS " +
-            "(id, name, species, introduction, birth_year) VALUES (?,?,?,?,?)";
+            "(name, species, introduction, birth_year) VALUES (?,?,?,?)";
     private static final String UPDATE_ANIMAL = "UPDATE ANIMALS " +
             "SET name=?, species = ?, introduction = ?, birth_year=? WHERE id=?";
     private static final String DELETE_ANIMAL = "DELETE FROM ANIMALS WHERE id = ?";

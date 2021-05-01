@@ -1,8 +1,8 @@
-package hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller;
+package hu.gergelyszalay.zoo.adoption.desktop.adopter.mvccontroller;
 
+import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
+import hu.gergelyszalay.zoo.adoption.desktop.adopter.api.impl.AdopterDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller.AdoptionsHomeController;
-import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
-import hu.gergelyszalay.zoo.adoption.desktop.animal.api.impl.AnimalDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.App;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -16,55 +16,51 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AnimalItemController implements Initializable {
+public class AdopterItemsController implements Initializable {
 
 
-    private Animal animal;
+    private Adopter adopter;
 
 
     @FXML
     private Button saveBtn;
 
+
     @FXML
     private TextField id;
     @FXML
-    private TextField name;
+    private TextField lastname;
+    @FXML
+    private TextField firstname;
 
     @FXML
-    private TextField species;
-
-    @FXML
-    private TextField introduction;
-
-    @FXML
-    private TextField birthYear;
+    private TextField email;
 
 
     @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        setAnimal(AdoptionsHomeController.currentlyViewedAnimal);
+        setAdopter(AdoptionsHomeController.currentlyViewedAdopter);
         createBinds();
     }
 
     private void createBinds() {
-        this.id.textProperty().bindBidirectional(this.animal.idProperty(), new NumberStringConverter());
-        this.name.textProperty().bindBidirectional(this.animal.nameProperty());
-        this.species.textProperty().bindBidirectional(this.animal.speciesProperty());
-        this.introduction.textProperty().bindBidirectional(this.animal.introductionProperty());
-        this.birthYear.textProperty().bindBidirectional(this.animal.birthYearProperty(), new NumberStringConverter());
+        this.id.textProperty().bindBidirectional(this.adopter.idProperty(), new NumberStringConverter());
+        this.lastname.textProperty().bindBidirectional(this.adopter.lastNameProperty());
+        this.firstname.textProperty().bindBidirectional(this.adopter.firstNameProperty());
+        this.email.textProperty().bindBidirectional(this.adopter.emailProperty());
     }
 
     @FXML
     public void onSave() {
-        animal = new AnimalDAOImpl().save(animal);
+        adopter = new AdopterDAOImpl().save(adopter);
         loadHome();
     }
 
     @FXML
     public void onDelete() {
-        new AnimalDAOImpl().delete(animal);
-       loadHome();
+        new AdopterDAOImpl().delete(adopter);
+        loadHome();
     }
 
     @FXML
@@ -87,8 +83,8 @@ public class AnimalItemController implements Initializable {
         ((Stage) this.saveBtn.getScene().getWindow()).close();
     }
 
-    public void setAnimal(Animal animal) {
-        this.animal = animal;
+    public void setAdopter(Adopter adopter) {
+        this.adopter = adopter;
     }
 
 
