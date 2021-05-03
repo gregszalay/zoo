@@ -2,11 +2,11 @@ package hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller;
 
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.CustomWindow;
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
-import hu.gergelyszalay.zoo.adoption.desktop.adopter.api.impl.AdopterDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.adopter.impl.AdopterDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
-import hu.gergelyszalay.zoo.adoption.desktop.adoption.api.impl.AdoptionDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.adoption.impl.AdoptionDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
-import hu.gergelyszalay.zoo.adoption.desktop.animal.api.impl.AnimalDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.animal.impl.AnimalDAOImpl;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,9 +15,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+import java.io.ByteArrayInputStream;
 import java.net.URL;
+import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -234,5 +238,7 @@ public class AdoptionsHomeController implements Initializable {
                 "Új Állat", 800, 500, false);
 
     }
+
+
 
 }

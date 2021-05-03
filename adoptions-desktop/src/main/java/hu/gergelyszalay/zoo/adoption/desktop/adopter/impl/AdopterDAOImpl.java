@@ -1,7 +1,7 @@
-package hu.gergelyszalay.zoo.adoption.desktop.adopter.api.impl;
+package hu.gergelyszalay.zoo.adoption.desktop.adopter.impl;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
-import hu.gergelyszalay.zoo.adoption.desktop.adopter.api.AdopterDAO;
+import hu.gergelyszalay.zoo.adoption.desktop.adopter.AdopterDAO;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.config.ZooAdoptionsConfiguration;
 
 import java.sql.*;
@@ -14,9 +14,9 @@ public class AdopterDAOImpl implements AdopterDAO {
     // SQL Statements
     private static final String SELECT_ALL_ADOPTERS = "SELECT * FROM ADOPTERS";
     private static final String INSERT_ADOPTER = "INSERT INTO ADOPTERS " +
-            "(last_name, first_name, email) VALUES (?,?,?)";
+            "(last_name, first_name, email, password) VALUES (?,?,?,?)";
     private static final String UPDATE_ADOPTER = "UPDATE ADOPTERS " +
-            "SET last_name=?, first_name = ?, email = ? WHERE id=?";
+            "SET last_name=?, first_name = ?, email = ?, password = ? WHERE id=?";
     private static final String DELETE_ADOPTER = "DELETE FROM ADOPTERS WHERE id = ?";
     private final String connectionURL;
 
@@ -40,6 +40,42 @@ public class AdopterDAOImpl implements AdopterDAO {
                 adopter.setLastName(rs.getString("last_name"));
                 adopter.setFirstName(rs.getString("first_name"));
                 adopter.setEmail(rs.getString("email"));
+                adopter.setPassword(rs.getString("password"));
+
+                result.add(adopter);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return result;
+
+    }
+
+    @Override
+    public List<Adopter> findUser(String email, String password) {
+
+        List<Adopter> result = new ArrayList<>();
+
+        try (Connection c = DriverManager.getConnection(connectionURL);
+             //PreparedStatement stmt = c.prepareStatement("SELECT * FROM ADOPTERS where email=? AND password=?")
+             PreparedStatement stmt = c.prepareStatement("SELECT * FROM ADOPTERS " +
+                     "where email=? " +
+                     "AND password=?")
+        ) {
+
+            stmt.setString(1, email);
+            stmt.setString(2, password);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Adopter adopter = new Adopter();
+                adopter.setId(rs.getInt("id"));
+                adopter.setLastName(rs.getString("last_name"));
+                adopter.setFirstName(rs.getString("first_name"));
+                adopter.setEmail(rs.getString("email"));
+                adopter.setPassword(rs.getString("password"));
 
                 result.add(adopter);
             }
@@ -61,12 +97,13 @@ public class AdopterDAOImpl implements AdopterDAO {
                      c.prepareStatement(UPDATE_ADOPTER)
         ) {
             if (adopter.getId() > 0) { // UPDATE
-                stmt.setInt(4, adopter.getId());
+                stmt.setInt(5, adopter.getId());
             }
 
             stmt.setString(1, String.valueOf(adopter.getLastName()));
             stmt.setString(2, String.valueOf(adopter.getFirstName()));
             stmt.setString(3, String.valueOf(adopter.getEmail()));
+            stmt.setString(4, String.valueOf(adopter.getPassword()));
 
             int affectedRows = stmt.executeUpdate();
             if (affectedRows == 0) {

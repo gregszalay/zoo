@@ -4,6 +4,11 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.io.ByteArrayInputStream;
+import java.util.Base64;
 
 public class Animal {
 
@@ -12,6 +17,8 @@ public class Animal {
     private final StringProperty species = new SimpleStringProperty(this, "species");
     private final StringProperty introduction = new SimpleStringProperty(this, "introduction");
     private final IntegerProperty birthYear = new SimpleIntegerProperty(this, "birthYear");
+    private final StringProperty picture = new SimpleStringProperty(this, "picture");
+
 
     public Animal() {
         id.set(-1);
@@ -19,6 +26,7 @@ public class Animal {
         species.set("Kérjük, adja meg az állat fajtáját!");
         introduction.set("Kérjük, adja meg a példány rövid ismertetését!");
         birthYear.set(0);
+        picture.set("Paste Base64 image string");
     }
 
     public int getId() {
@@ -73,6 +81,18 @@ public class Animal {
         return birthYear.get();
     }
 
+    public String getPicture() {
+        return picture.get();
+    }
+
+    public StringProperty pictureProperty() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture.set(picture);
+    }
+
     public void setBirthYear(int birthYear) {
         this.birthYear.set(birthYear);
     }
@@ -80,4 +100,16 @@ public class Animal {
     public IntegerProperty birthYearProperty() {
         return birthYear;
     }
+
+    private ImageView base64decode(String base64String){
+        byte[] imageBytes= Base64.getDecoder().decode(base64String.getBytes());
+        ByteArrayInputStream is=new ByteArrayInputStream(imageBytes);
+        return new ImageView(new Image(is));
+    }
+
+    public ImageView getPictureImageView(){
+        return base64decode(this.getPicture());
+    }
+
+
 }

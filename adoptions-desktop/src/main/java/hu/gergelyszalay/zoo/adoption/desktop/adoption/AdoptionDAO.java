@@ -1,4 +1,4 @@
-package hu.gergelyszalay.zoo.adoption.desktop.adoption.api;
+package hu.gergelyszalay.zoo.adoption.desktop.adoption;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
 

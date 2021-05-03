@@ -2,12 +2,13 @@ package hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller;
 
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller.AdoptionsHomeController;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
-import hu.gergelyszalay.zoo.adoption.desktop.animal.api.impl.AnimalDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.animal.impl.AnimalDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.App;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
@@ -39,6 +40,10 @@ public class AnimalItemController implements Initializable {
     @FXML
     private TextField birthYear;
 
+    @FXML
+    private TextArea picture;
+
+
 
     @FXML
     @Override
@@ -53,6 +58,7 @@ public class AnimalItemController implements Initializable {
         this.species.textProperty().bindBidirectional(this.animal.speciesProperty());
         this.introduction.textProperty().bindBidirectional(this.animal.introductionProperty());
         this.birthYear.textProperty().bindBidirectional(this.animal.birthYearProperty(), new NumberStringConverter());
+        this.picture.textProperty().bindBidirectional(this.animal.pictureProperty());
     }
 
     @FXML

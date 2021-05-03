@@ -11,12 +11,14 @@ public class Adopter {
     private final StringProperty lastName = new SimpleStringProperty(this, "lastName");
     private final StringProperty firstName = new SimpleStringProperty(this, "firstName");
     private final StringProperty email = new SimpleStringProperty(this, "email");
+    private final StringProperty password = new SimpleStringProperty(this, "password");
 
     public Adopter() {
         id.set(-1);
         lastName.set("Kérjük, adja meg az örökbefogadó vezetéknevét!");
         firstName.set("Kérjük, adja meg az örökbefogadó keresztknevét!");
         email.set("Kérjük, adja meg az örökbefogadó email címét!");
+        password.set("");
     }
 
     public int getId() {
@@ -65,6 +67,18 @@ public class Adopter {
 
     public StringProperty emailProperty() {
         return email;
+    }
+
+    public String getPassword() {
+        return password.get();
+    }
+
+    public StringProperty passwordProperty() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password.set(password);
     }
 }
 

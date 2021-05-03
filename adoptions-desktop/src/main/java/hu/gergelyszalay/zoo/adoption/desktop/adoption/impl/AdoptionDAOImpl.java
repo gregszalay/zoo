@@ -1,7 +1,7 @@
-package hu.gergelyszalay.zoo.adoption.desktop.adoption.api.impl;
+package hu.gergelyszalay.zoo.adoption.desktop.adoption.impl;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
-import hu.gergelyszalay.zoo.adoption.desktop.adoption.api.AdoptionDAO;
+import hu.gergelyszalay.zoo.adoption.desktop.adoption.AdoptionDAO;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.config.ZooAdoptionsConfiguration;
 
 import java.sql.*;

@@ -1,7 +1,7 @@
 package hu.gergelyszalay.zoo.adoption.desktop.adopter.mvccontroller;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
-import hu.gergelyszalay.zoo.adoption.desktop.adopter.api.impl.AdopterDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.adopter.impl.AdopterDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller.AdoptionsHomeController;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.App;
 import javafx.application.Platform;
@@ -36,6 +36,9 @@ public class AdopterItemsController implements Initializable {
     @FXML
     private TextField email;
 
+    @FXML
+    private TextField password;
+
 
     @FXML
     @Override
@@ -49,6 +52,7 @@ public class AdopterItemsController implements Initializable {
         this.lastname.textProperty().bindBidirectional(this.adopter.lastNameProperty());
         this.firstname.textProperty().bindBidirectional(this.adopter.firstNameProperty());
         this.email.textProperty().bindBidirectional(this.adopter.emailProperty());
+        this.password.textProperty().bindBidirectional(this.adopter.passwordProperty());
     }
 
     @FXML
