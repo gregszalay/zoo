@@ -27,11 +27,8 @@ public class AnimalListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        System.out.println(req.getCharacterEncoding());
         if (req.getParameter("searchedTerm") != null && !req.getParameter("searchedTerm").equals("")) {
             resultsList = animalDAO.findAnimal(req.getParameter("searchedTerm"));
-            System.out.println(resultsList.size());
-            System.out.println(req.getParameter("searchedTerm"));
         } else {
             resultsList = animalDAO.findAll();
         }

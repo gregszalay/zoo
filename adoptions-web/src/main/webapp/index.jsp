@@ -19,9 +19,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="pages/list-contact.jsp">Állataink</a>
+                <a class="nav-link" href="pages/animal-list.jsp">Állataink</a>
                 <c:if test="${cookie.email == null}">
-                    <a class="nav-link" href="pages/add-contact.jsp">Regisztráció</a>
+                    <a class="nav-link" href="pages/adopter-registration.jsp">Regisztráció</a>
                 </c:if>
                 <c:if test="${cookie.email != null}">
                     <a class='nav-link' href='#'>${cookie.email.value}</a>
@@ -43,14 +43,14 @@
     <div class="row mt-5">
         <div class="d-grid gap-2 col-6 mx-auto">
             <c:if test="${cookie.email == null}">
-                <button class="btn btn-primary btn-lg" type="button" onclick="location.href ='pages/add-contact.jsp'">
+                <button class="btn btn-primary btn-lg" type="button" onclick="location.href ='pages/adopter-registration.jsp'">
                     Regisztráció
                 </button>
                 <button class="btn btn-primary btn-lg" type="button" onclick="location.href ='pages/login.jsp'">
                     Bejelentkezés
                 </button>
             </c:if>
-            <button class="btn btn-primary btn-lg" type="button" onclick="location.href ='pages/list-contact.jsp'">
+            <button class="btn btn-primary btn-lg" type="button" onclick="location.href ='pages/animal-list.jsp'">
                 Állataink
             </button>
         </div>

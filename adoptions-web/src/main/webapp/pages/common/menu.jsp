@@ -10,9 +10,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-link" href="list-contact.jsp">Állataink</a>
+                <a class="nav-link" href="animal-list.jsp">Állataink</a>
                 <c:if test="${cookie.email == null}">
-                    <a class="nav-link" href="add-contact.jsp">Regisztráció</a>
+                    <a class="nav-link" href="adopter-registration.jsp">Regisztráció</a>
                     <a class="nav-link" href="login.jsp">Bejelentkezés</a>
                 </c:if>
                 <c:if test="${cookie.email != null}">

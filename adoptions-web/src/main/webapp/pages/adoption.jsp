@@ -4,7 +4,7 @@
 <html>
 <head>
     <jsp:include page="common/common-header.jsp"/>
-    <script src="../js/add-contact.js"></script>
+    <script src="../js/adopter-registration.js"></script>
     <title>Örökbefogadás</title>
 </head>
 <body>

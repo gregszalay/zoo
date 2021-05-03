@@ -34,23 +34,18 @@ public class AdoptionController extends HttpServlet {
         try {
             try {
                 adoption.setAnimalId(Integer.parseInt(request.getParameter("animalId")));
-                System.out.println(request.getCookies()[1].getValue());
-                List<Adopter> results = adopterDAO.findUser(request.getCookies()[1].getValue());
+                String emailOfCurrentUser = request.getCookies()[1].getValue();
+                List<Adopter> results = adopterDAO.findUser(emailOfCurrentUser);
                 Adopter user = results.get(0);
-                System.out.println("emial of found adoper: " + user.getEmail());
-                System.out.println("ID of found adoper: " + user.getId());
                 adoption.setAdopterId(user.getId());
-
                 adoption.setAdoptionDate(LocalDate.now());
                 adoption.setSupportType(request.getParameter("supportType"));
                 adoption.setSupportAmount(Integer.parseInt(request.getParameter("supportAmount")));
             } catch (NumberFormatException ne) {
                 System.err.println("AnimalId, adopterId, Support amount must be a valid number!");
             }
-
             adoption = adoptionDAO.save(adoption);
-            response.sendRedirect("pages/list-contact.jsp");
-
+            response.sendRedirect("pages/animal-list.jsp");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,7 +58,6 @@ public class AdoptionController extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         String animalId = req.getParameter("animalId");
         List<Animal> results = animalDAO.findById(animalId);
-        System.out.println("name of found animal: " + results.get(0).getName());
         req.setAttribute("animalToBeAdopted", results.get(0));
 
     }

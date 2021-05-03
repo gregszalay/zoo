@@ -33,10 +33,9 @@ public class RegistrationController extends HttpServlet {
             adopter.setFirstName(request.getParameter("firstName"));
             adopter.setEmail(request.getParameter("email"));
             adopter.setPassword(request.getParameter("password1"));
-
             adopter = adopterDAO.save(adopter);
             response.addCookie(new Cookie("email", request.getParameter("email")));
-            response.sendRedirect("pages/list-contact.jsp");
+            response.sendRedirect("pages/animal-list.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();
