@@ -14,32 +14,17 @@ import java.util.Objects;
 
 public class CustomWindow extends Window {
 
-    private Parent root = new AnchorPane();
-    private final Stage customStage;
-
-
-    public CustomWindow(String FXMLResourceName, Stage priorStage, String windowTitle, double width, double height,
-                        boolean inEditMode) {
-
+    public CustomWindow(String FXMLResourceName, Stage priorStage, String windowTitle, double width, double height) {
+        Parent root = new AnchorPane();
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(FXMLResourceName)));
-            this.root = loader.load();
+            root = loader.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (priorStage == null){
-            this.customStage = new Stage();
-        } else this.customStage = priorStage;
+        Stage customStage = Objects.requireNonNullElseGet(priorStage, Stage::new);
         customStage.setTitle(windowTitle);
         customStage.setScene(new Scene(root, width, height));
         customStage.show();
-    }
-
-    public void close() {
-        customStage.close();
-    }
-
-    public Stage getCustomStage() {
-        return customStage;
     }
 }

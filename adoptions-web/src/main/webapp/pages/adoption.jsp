@@ -26,16 +26,27 @@
             <img src="${requestScope.animalToBeAdopted.picture}" alt="${requestScope.animalToBeAdopted.name} fotója" />
         </div>
         <div class="form-group">
-            <label for="supportType">Támogatás típusa</label>
-            <input name="supportType" type="text" class="form-control" id="supportType"
-                   placeholder="Milyen jellegű támogatást szeretne nyújtani az állatnak?"/>
+            <label for="supportType">Támogatás mennyisége</label>
+            <select name="supportType" class="form-control" id="supportType">
+                <c:forEach var="supportType" items="${requestScope.supportTypeList}">
+                    <option value="${supportType}">${supportType}</option>
+                </c:forEach>
+            </select>
         </div>
         <div class="form-group">
             <label for="supportAmount">Támogatás mennyisége</label>
             <input name="supportAmount" type="text" class="form-control" id="supportAmount"
                    placeholder="Mennyiség számban"/>
         </div>
-        <button id="submit" type="submit" class="btn btn-primary">Örökbefoadom!</button>
+        <div class="form-group">
+            <label for="supportFrequency">Támogatás gyakorisága</label>
+            <select name="supportFrequency" class="form-control" id="supportFrequency">
+                <c:forEach var="supportFrequency" items="${requestScope.supportFrequencyList}">
+                    <option value="${supportFrequency}">${supportFrequency}</option>
+                </c:forEach>
+            </select>
+        </div>
+        <button id="submit" type="submit" class="btn btn-primary">Örökbefogadom!</button>
     </form>
 </div>
 </body>

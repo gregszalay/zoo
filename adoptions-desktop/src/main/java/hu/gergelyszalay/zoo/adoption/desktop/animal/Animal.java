@@ -22,11 +22,11 @@ public class Animal {
 
     public Animal() {
         id.set(-1);
-        name.set("Kérjük, adja meg az állat becenevét!");
-        species.set("Kérjük, adja meg az állat fajtáját!");
-        introduction.set("Kérjük, adja meg a példány rövid ismertetését!");
+        name.set("");
+        species.set("");
+        introduction.set("");
         birthYear.set(0);
-        picture.set("Paste Base64 image string");
+        picture.set("");
     }
 
     public int getId() {
@@ -46,7 +46,7 @@ public class Animal {
     }
 
     public void setName(String name) {
-        this.name.set(name);
+        this.name.set(name.toLowerCase());
     }
 
     public StringProperty nameProperty() {

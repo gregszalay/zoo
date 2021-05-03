@@ -1,7 +1,7 @@
 package hu.gergelyszalay.zoo.adoption.desktop.adopter.mvccontroller;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
-import hu.gergelyszalay.zoo.adoption.desktop.adopter.impl.AdopterDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.adopter.AdopterDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller.AdoptionsHomeController;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.App;
 import javafx.application.Platform;
@@ -21,10 +21,8 @@ public class AdopterItemsController implements Initializable {
 
     private Adopter adopter;
 
-
     @FXML
     private Button saveBtn;
-
 
     @FXML
     private TextField id;

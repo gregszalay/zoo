@@ -13,6 +13,7 @@ public class Adoption implements Serializable {
     private final ObjectProperty<LocalDate> adoptionDate = new SimpleObjectProperty<>(this, "adoptionDate");
     private final StringProperty supportType = new SimpleStringProperty(this, "supportType");
     private final IntegerProperty supportAmount = new SimpleIntegerProperty(this, "supportAmount");
+    private final StringProperty supportFrequency = new SimpleStringProperty(this, "supportFrequency");
 
     public Adoption() {
         id.set(-1);
@@ -21,6 +22,7 @@ public class Adoption implements Serializable {
         adoptionDate.set(LocalDate.now());
         supportType.set("Nincs");
         supportAmount.set(0);
+        supportFrequency.set("Nincs");
     }
 
     public int getId() {
@@ -37,6 +39,18 @@ public class Adoption implements Serializable {
 
     public int getAnimalId() {
         return animalId.get();
+    }
+
+    public String getSupportFrequency() {
+        return supportFrequency.get();
+    }
+
+    public StringProperty supportFrequencyProperty() {
+        return supportFrequency;
+    }
+
+    public void setSupportFrequency(String supportFrequency) {
+        this.supportFrequency.set(supportFrequency);
     }
 
     public void setAnimalId(int animalId) {

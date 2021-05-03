@@ -1,4 +1,4 @@
-package hu.gergelyszalay.zoo.adoption.desktop.animal.impl;
+package hu.gergelyszalay.zoo.adoption.desktop.animal;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
@@ -133,6 +133,47 @@ public class AnimalDAOImpl implements AnimalDAO {
 
         return result;
 
+    }
+
+    @Override
+    public List<Animal> findByName(String animalName) {
+
+        animalName = animalName.toLowerCase();
+
+        List<Animal> result = new ArrayList<>();
+
+        animalName = animalName
+                .replace("!", "!!")
+                .replace("%", "!%")
+                .replace("_", "!_")
+                .replace("[", "![");
+
+        try (Connection c = DriverManager.getConnection(connectionURL);
+
+             PreparedStatement stmt = c.prepareStatement("SELECT * FROM animals " +
+                     "where name LIKE ? ")
+        ) {
+
+            stmt.setString(1, "%" + animalName + "%");
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Animal animal = new Animal();
+                animal.setId(rs.getInt("id"));
+                animal.setName(rs.getString("name"));
+                animal.setSpecies(rs.getString("species"));
+                animal.setIntroduction(rs.getString("introduction"));
+                animal.setBirthYear(rs.getInt("birth_year"));
+                animal.setPicture(rs.getString("picture"));
+
+                result.add(animal);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return result;
     }
 
 

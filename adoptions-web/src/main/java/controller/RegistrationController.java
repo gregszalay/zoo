@@ -3,10 +3,10 @@ package controller;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.AdopterDAO;
-import hu.gergelyszalay.zoo.adoption.desktop.adopter.impl.AdopterDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.adopter.AdopterDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.AnimalDAO;
-import hu.gergelyszalay.zoo.adoption.desktop.animal.impl.AnimalDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.animal.AnimalDAOImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

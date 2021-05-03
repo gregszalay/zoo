@@ -1,14 +1,16 @@
 package controller;
 
+import hu.gergelyszalay.zoo.adoption.desktop.SupportFrequencyValues;
+import hu.gergelyszalay.zoo.adoption.desktop.SupportTypeValues;
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.AdopterDAO;
-import hu.gergelyszalay.zoo.adoption.desktop.adopter.impl.AdopterDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.adopter.AdopterDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.Adoption;
 import hu.gergelyszalay.zoo.adoption.desktop.adoption.AdoptionDAO;
-import hu.gergelyszalay.zoo.adoption.desktop.adoption.impl.AdoptionDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.adoption.AdoptionDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.AnimalDAO;
-import hu.gergelyszalay.zoo.adoption.desktop.animal.impl.AnimalDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.animal.AnimalDAOImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +31,7 @@ public class AdoptionController extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
         Adoption adoption = new Adoption();
         try {
             try {
@@ -41,6 +43,7 @@ public class AdoptionController extends HttpServlet {
                 adoption.setAdoptionDate(LocalDate.now());
                 adoption.setSupportType(request.getParameter("supportType"));
                 adoption.setSupportAmount(Integer.parseInt(request.getParameter("supportAmount")));
+                adoption.setSupportFrequency(request.getParameter("supportFrequency"));
             } catch (NumberFormatException ne) {
                 System.err.println("AnimalId, adopterId, Support amount must be a valid number!");
             }
@@ -58,6 +61,11 @@ public class AdoptionController extends HttpServlet {
         req.setCharacterEncoding("utf-8");
         String animalId = req.getParameter("animalId");
         List<Animal> results = animalDAO.findById(animalId);
+
+        List<String> supportTypeList = SupportTypeValues.getValueList();
+        List<String> supportFrequencyList = SupportFrequencyValues.getValueList();
+        req.setAttribute("supportTypeList", supportTypeList);
+        req.setAttribute("supportFrequencyList", supportFrequencyList);
         req.setAttribute("animalToBeAdopted", results.get(0));
 
     }

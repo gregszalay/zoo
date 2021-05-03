@@ -9,6 +9,7 @@ public interface AdopterDAO {
     List<Adopter> findAll();
     List<Adopter> findUser(String email, String password);
     List<Adopter> findUser(String email);
+    List<Adopter> findByName(String adopterName);
     Adopter save(Adopter contact);
     void delete(Adopter contact);
 

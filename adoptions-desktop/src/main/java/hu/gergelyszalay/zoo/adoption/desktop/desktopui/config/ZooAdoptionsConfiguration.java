@@ -11,7 +11,6 @@ public class ZooAdoptionsConfiguration {
             try {
                 props.load(ZooAdoptionsConfiguration.class.getResourceAsStream("/application.properties"));
             } catch (IOException e) {
-                // TODO: logging
                 e.printStackTrace();
             }
 

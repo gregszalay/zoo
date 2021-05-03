@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="429.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-          fx:controller="hu.gergelyszalay.zoo.adoption.desktop.adoption.mvccontroller.AdoptionItemsController">
+<GridPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="530.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hu.gergelyszalay.zoo.adoption.desktop.adoption.mvccontroller.AdoptionItemsController">
     <rowConstraints>
         <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
         <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
@@ -25,6 +24,8 @@
         <RowConstraints maxHeight="160.0" minHeight="0.0" percentHeight="8.0" prefHeight="63.0" />
         <RowConstraints maxHeight="58.0" minHeight="10.0" percentHeight="8.0" prefHeight="58.0" />
         <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" percentHeight="8.0" prefHeight="30.0" />
+      <RowConstraints />
     </rowConstraints>
     <columnConstraints>
         <ColumnConstraints minWidth="10.0" percentWidth="11.0" prefWidth="100.0" />
@@ -49,8 +50,9 @@
         <Label text="adoptionDate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
         <Label text="supportType" GridPane.columnIndex="1" GridPane.rowIndex="5" />
         <Label text="supportAmount" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Label text="supportFrequency" GridPane.columnIndex="1" GridPane.rowIndex="7" />
 
-        <HBox alignment="CENTER" prefHeight="92.0" prefWidth="433.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7">
+        <HBox alignment="CENTER" prefHeight="92.0" prefWidth="433.0" spacing="10.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8">
             <children>
                 <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onSave" text="Save" />
                 <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" text="Törlés" />
@@ -65,8 +67,9 @@
         <TextField fx:id="animalId" GridPane.columnIndex="2" GridPane.rowIndex="2" />
         <TextField fx:id="adopterId" GridPane.columnIndex="2" GridPane.rowIndex="3" />
         <DatePicker fx:id="adoptionDate" prefHeight="25.0" prefWidth="421.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-        <TextField fx:id="supportType" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+        <ChoiceBox fx:id="supportType" GridPane.columnIndex="2" GridPane.rowIndex="5" />
         <TextField fx:id="supportAmount" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+        <ChoiceBox fx:id="supportFrequency" GridPane.columnIndex="2" GridPane.rowIndex="7" />
 
 
     </children>

@@ -2,7 +2,7 @@ package hu.gergelyszalay.zoo.adoption.desktop.animal.mvccontroller;
 
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.mvccontroller.AdoptionsHomeController;
 import hu.gergelyszalay.zoo.adoption.desktop.animal.Animal;
-import hu.gergelyszalay.zoo.adoption.desktop.animal.impl.AnimalDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.animal.AnimalDAOImpl;
 import hu.gergelyszalay.zoo.adoption.desktop.desktopui.App;
 import javafx.application.Platform;
 import javafx.fxml.FXML;

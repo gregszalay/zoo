@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>adoptions-desktop</module>
-        <module>adoptions-core</module>
         <module>adoptions-web</module>
     </modules>
 
@@ -20,16 +19,6 @@
     </properties>
 
     <build>
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>exec-maven-plugin</artifactId>-->
-<!--                <version>3.0.0</version>-->
-<!--                <configuration>-->
-<!--                    <mainClass>hu.gergelyszalay.zoo.adoption.desktop.desktopui.App</mainClass>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
     </build>
 
 </project>

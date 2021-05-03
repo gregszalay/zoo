@@ -15,9 +15,9 @@ public class Adopter {
 
     public Adopter() {
         id.set(-1);
-        lastName.set("Kérjük, adja meg az örökbefogadó vezetéknevét!");
-        firstName.set("Kérjük, adja meg az örökbefogadó keresztknevét!");
-        email.set("Kérjük, adja meg az örökbefogadó email címét!");
+        lastName.set("");
+        firstName.set("");
+        email.set("");
         password.set("");
     }
 
@@ -38,7 +38,7 @@ public class Adopter {
     }
 
     public void setLastName(String lastName) {
-        this.lastName.set(lastName);
+        this.lastName.set(lastName.toLowerCase());
     }
 
     public StringProperty lastNameProperty() {
@@ -50,7 +50,7 @@ public class Adopter {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName.set(firstName);
+        this.firstName.set(firstName.toLowerCase());
     }
 
     public StringProperty firstNameProperty() {

@@ -2,7 +2,7 @@ package controller;
 
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.Adopter;
 import hu.gergelyszalay.zoo.adoption.desktop.adopter.AdopterDAO;
-import hu.gergelyszalay.zoo.adoption.desktop.adopter.impl.AdopterDAOImpl;
+import hu.gergelyszalay.zoo.adoption.desktop.adopter.AdopterDAOImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
