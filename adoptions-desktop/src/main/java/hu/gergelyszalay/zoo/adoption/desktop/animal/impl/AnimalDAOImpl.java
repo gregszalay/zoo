@@ -56,6 +56,39 @@ public class AnimalDAOImpl implements AnimalDAO {
 
     }
 
+
+    public List<Animal> findById(String animalId) {
+
+        List<Animal> result = new ArrayList<>();
+
+        try (Connection c = DriverManager.getConnection(connectionURL);
+        PreparedStatement stmt = c.prepareStatement("SELECT * FROM animals " +
+                "where id=? ")
+        ) {
+
+            stmt.setString(1, animalId);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Animal animal = new Animal();
+                animal.setId(rs.getInt("id"));
+                animal.setName(rs.getString("name"));
+                animal.setSpecies(rs.getString("species"));
+                animal.setIntroduction(rs.getString("introduction"));
+                animal.setBirthYear(rs.getInt("birth_year"));
+                animal.setPicture(rs.getString("picture"));
+
+                result.add(animal);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return result;
+
+    }
+
     @Override
     public List<Animal> findAnimal(String searchedTerm) {
 

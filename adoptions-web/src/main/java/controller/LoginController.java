@@ -16,10 +16,10 @@ import java.util.List;
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
     private final AdopterDAO adopterDAO = new AdopterDAOImpl();
     private Adopter user;
-
 
     public LoginController() {
         super();
@@ -28,19 +28,16 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("utf-8");
         List<Adopter> results = this.adopterDAO.findUser(request.getParameter("email"), request.getParameter("password"));
-        System.out.println("params: " + request.getParameter("email") +request.getParameter("password"));
+        System.out.println("params: " + request.getParameter("email") + request.getParameter("password"));
         if (!results.isEmpty()) {
             this.user = results.get(0);
         }
-
         if (this.user != null){
             System.out.println(user.emailProperty().toString() + user.passwordProperty().toString());
 
-            response.addCookie(new Cookie("username", request.getParameter("username")));
+            response.addCookie(new Cookie("email", request.getParameter("email")));
             response.sendRedirect("pages/list-contact.jsp");
         }
-        System.out.println("Could'nt find user");
-
 
     }
 

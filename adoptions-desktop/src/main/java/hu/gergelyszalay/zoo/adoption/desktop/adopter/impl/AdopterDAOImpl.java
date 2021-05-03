@@ -53,6 +53,40 @@ public class AdopterDAOImpl implements AdopterDAO {
 
     }
 
+
+    @Override
+    public List<Adopter> findUser(String email) {
+
+        List<Adopter> result = new ArrayList<>();
+
+        try (Connection c = DriverManager.getConnection(connectionURL);
+             PreparedStatement stmt = c.prepareStatement("SELECT * FROM ADOPTERS " +
+                     "where email=? ")
+        ) {
+
+            stmt.setString(1, email);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Adopter adopter = new Adopter();
+                adopter.setId(rs.getInt("id"));
+                adopter.setLastName(rs.getString("last_name"));
+                adopter.setFirstName(rs.getString("first_name"));
+                adopter.setEmail(rs.getString("email"));
+                adopter.setPassword(rs.getString("password"));
+
+                result.add(adopter);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return result;
+
+    }
+
+
     @Override
     public List<Adopter> findUser(String email, String password) {
 
